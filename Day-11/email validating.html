@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Email Format Validation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    input.error {
+      border: 2px solid #d8000c;
+      background-color: #ffebeb;
+    }
+    input.valid {
+      border: 2px solid #4caf50;
+      background-color: #e9f7ef;
+    }
+    .error-msg {
+      color: #d8000c;
+      font-size: 0.9em;
+      display: none;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="emailForm" novalidate>
+    <label for="email">Email:</label><br />
+    <input type="text" id="email" name="email" placeholder="Enter your email" />
+    <div class="error-msg" id="emailError">Please enter a valid email address.</div>
+    <br />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
+
+      $('#email').on('input', function() {
+        const emailVal = $(this).val().trim();
+        if (isValidEmail(emailVal)) {
+          $('#emailError').hide();
+          $(this).removeClass('error').addClass('valid');
+        } else {
+          $('#emailError').show();
+          $(this).removeClass('valid').addClass('error');
+        }
+      });
+
+      $('#emailForm').submit(function(e) {
+        e.preventDefault();
+        const emailVal = $('#email').val().trim();
+        if (isValidEmail(emailVal)) {
+          alert('Email is valid. Form submitted!');
+          // You can proceed with form submission here
+          $('#emailError').hide();
+          $('#email').removeClass('error').addClass('valid');
+        } else {
+          $('#emailError').show();
+          $('#email').removeClass('valid').addClass('error');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

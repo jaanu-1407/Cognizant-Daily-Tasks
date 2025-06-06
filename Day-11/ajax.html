@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fetch Data with $.get()</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    #userData {
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+    }
+    .user {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .user strong {
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="loadUsers">Load Users</button>
+
+  <div id="userData"></div>
+
+  <script>
+    $(document).ready(function() {
+      $('#loadUsers').click(function() {
+        $.get('https://jsonplaceholder.typicode.com/users', function(users) {
+          $('#userData').empty(); 
+          users.forEach(function(user) {
+            $('#userData').append(
+              `<div class="user">
+                <strong>${user.name}</strong>
+                Email: ${user.email}<br>
+                Phone: ${user.phone}<br>
+                Website: ${user.website}
+              </div>`
+            );
+          });
+        }).fail(function() {
+          $('#userData').text('Failed to load user data.');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

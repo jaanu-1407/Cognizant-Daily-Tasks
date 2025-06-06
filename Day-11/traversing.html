@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traversing</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    .parent {
+      padding: 20px;
+      margin: 10px;
+      border: 1px solid #ccc;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      width: 200px;
+      margin: 30px auto;
+    }
+    li {
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #eee;
+      text-align: center;
+    }
+    .highlight {
+      background-color: #ffd700; 
+      font-weight: bold;
+    }
+    #nameList {
+      list-style-type: none;
+      padding: 0;
+      width: 200px;
+      margin: 20px auto;
+    }
+    #nameList li {
+      padding: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 4px;
+    }
+    #searchInput {
+      width: 200px;
+      padding: 8px;
+      margin: 20px auto;
+      display: block;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="parent">
+    This is the parent of <span id="childSpan">this span</span>.
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#childSpan').parent().css('background-color', '#ffe4b5');
+    });
+  </script>
+
+  <p id="first">First paragraph.</p>
+  <p id="second">Second paragraph (will be made bold).</p>
+  <p>Third paragraph.</p>
+
+  <script>
+    $(document).ready(function () {
+      $('#first').next().css('font-weight', 'bold');
+    });
+  </script>
+  
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+  </ul>
+
+  <script>
+    $(document).ready(function() {
+      $('#myList li:first').addClass('highlight');
+      $('#myList li:last').addClass('highlight');
+    });
+  </script>
+
+  <input type="text" id="searchInput" placeholder="Type to filter names..." />
+
+  <ul id="nameList">
+    <li>John</li>
+    <li>Jane</li>
+    <li>Michael</li>
+    <li>Michelle</li>
+    <li>Robert</li>
+    <li>Rachel</li>
+    <li>David</li>
+    <li>Diana</li>
+  </ul>
+
+  <script>
+    $(document).ready(function() {
+      $('#searchInput').on('keyup', function() {
+        const filterText = $(this).val().toLowerCase();
+
+        $('#nameList li').show().filter(function() {
+          return !$(this).text().toLowerCase().includes(filterText);
+        }).hide();
+      });
+    });
+  </script>
+
+</body>
+</html>

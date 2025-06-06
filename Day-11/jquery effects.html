@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Show and Hide Effect</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    #myParagraph {
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid #333;
+      width: fit-content;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+    .question {
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+      padding-right: 20px;
+    }
+    .question::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    .question.active::after {
+      content: '-';
+    }
+    .answer {
+      display: none;
+      margin-top: 10px;
+      color: #333;
+    }
+    #myImage {
+      display: block;
+      margin: 20px auto;
+      max-width: 300px;
+    }
+    #toggleBtn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #progressContainer {
+      width: 400px;
+      height: 30px;
+      border: 2px solid #333;
+      border-radius: 5px;
+      margin: 50px auto;
+      background-color: #eee;
+      overflow: hidden;
+    }
+    #progressBar {
+      height: 100%;
+      width: 0;
+      background-color: #4caf50;
+      border-radius: 5px;
+    }
+    #startBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="myParagraph">This paragraph will be shown or hidden.</p>
+
+  <button id="hideBtn">Hide Paragraph</button>
+  <button id="showBtn">Show Paragraph</button>
+
+  <script>
+    $(document).ready(function () {
+      $('#hideBtn').click(function () {
+        $('#myParagraph').hide();
+      });
+
+      $('#showBtn').click(function () {
+        $('#myParagraph').show();
+      });
+    });
+  </script>
+  
+  <h1>Frequently Asked Questions</h1>
+
+  <div class="faq-item">
+    <div class="question">What is your return policy?</div>
+    <div class="answer">You can return any item within 30 days of purchase.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="question">Do you offer international shipping?</div>
+    <div class="answer">Yes, we ship worldwide with additional shipping fees.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="question">How can I track my order?</div>
+    <div class="answer">Once shipped, you’ll receive a tracking number via email.</div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('.question').click(function() {
+        $(this).toggleClass('active');
+        $(this).next('.answer').slideToggle();
+      });
+    });
+  </script>
+
+  <button id="toggleBtn">Toggle Image</button>
+  <img id="myImage" src="data:image/jpeg;base64,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" alt="Placeholder Image" />
+
+  <script>
+    $(document).ready(function() {
+      $('#toggleBtn').click(function() {
+        $('#myImage').fadeToggle('slow');
+      });
+    });
+  </script>
+
+  <button id="startBtn">Start Progress</button>
+
+  <script>
+    $(document).ready(function() {
+      $('#startBtn').click(function() {
+        $('#progressBar').stop(true).css('width', '0'); // reset before animation
+        $('#progressBar').animate({ width: '100%' }, 3000);
+      });
+    });
+  </script>
+</body>
+</html>

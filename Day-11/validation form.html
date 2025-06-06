@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Required Field Validation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    input.error {
+      border: 2px solid #d8000c;
+      background-color: #ffebeb;
+    }
+    input.valid {
+      border: 2px solid #4caf50;
+      background-color: #e9f7ef;
+    }
+    .error-msg {
+      color: #d8000c;
+      font-size: 0.9em;
+      display: none;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm" novalidate>
+    <div>
+      <label for="input1">Input 1 </label><br/>
+      <input type="text" id="input1" name="input1" placeholder="Enter first value" />
+      <div class="error-msg" id="error1">This field is required.</div>
+    </div>
+    <div>
+      <label for="input2">Input 2 </label><br/>
+      <input type="text" id="input2" name="input2" placeholder="Enter second value" />
+      <div class="error-msg" id="error2">This field is required.</div>
+    </div>
+    <div>
+      <label for="input3">Input 3 </label><br/>
+      <input type="text" id="input3" name="input3" placeholder="Enter third value" />
+      <div class="error-msg" id="error3">This field is required.</div>
+    </div>
+    <br/>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      function validateField(inputId, errorId) {
+        const value = $(inputId).val().trim();
+        if (value === "") {
+          $(errorId).show();
+          $(inputId).addClass('error').removeClass('valid');
+          return false;
+        } else {
+          $(errorId).hide();
+          $(inputId).removeClass('error').addClass('valid');
+          return true;
+        }
+      }
+
+      $('#myForm').submit(function(event) {
+        event.preventDefault();
+
+        const valid1 = validateField('#input1', '#error1');
+        const valid2 = validateField('#input2', '#error2');
+        const valid3 = validateField('#input3', '#error3');
+
+        if (valid1 && valid2 && valid3) {
+          alert("Form submitted successfully!");
+          // You can do actual submission here
+          $(this)[0].reset();
+          $('input').removeClass('valid');
+        }
+      });
+
+      // Optional: validate on input
+      $('#input1, #input2, #input3').on('input', function() {
+        const inputId = '#' + $(this).attr('id');
+        const errorId = '#error' + inputId.slice(-1);
+        validateField(inputId, errorId);
+      });
+    });
+  </script>
+
+</body>
+</html>

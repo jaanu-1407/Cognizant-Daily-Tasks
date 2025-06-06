@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>jQuery AJAX: Get and Post</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    #userData {
+      margin-top: 20px;
+    }
+    .user {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .user strong {
+      display: block;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      width: fit-content;
+    }
+    #response {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #4caf50;
+      background-color: #d4edda;
+      color: #155724;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>jQuery AJAX: Get and Post Example</h1>
+
+  <!-- GET Section -->
+  <h2>Fetch Users</h2>
+  <button id="loadUsers">Load Users</button>
+  <div id="userData"></div>
+
+  <!-- POST Section -->
+  <h2>Submit Your Name</h2>
+  <form id="nameForm">
+    <input type="text" id="nameInput" name="name" placeholder="Enter your name" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div id="response"></div>
+
+  <script>
+    $(document).ready(function() {
+      // GET: Load users on button click
+      $('#loadUsers').click(function() {
+        $.get('https://jsonplaceholder.typicode.com/users', function(users) {
+          $('#userData').empty();
+          users.forEach(function(user) {
+            $('#userData').append(
+              `<div class="user">
+                <strong>${user.name}</strong>
+                Email: ${user.email}<br>
+                Phone: ${user.phone}<br>
+                Website: ${user.website}
+              </div>`
+            );
+          });
+        }).fail(function() {
+          $('#userData').text('Failed to load user data.');
+        });
+      });
+
+      // POST: Submit name form
+      $('#nameForm').submit(function(event) {
+        event.preventDefault();
+
+        const name = $('#nameInput').val();
+
+        $.post('https://jsonplaceholder.typicode.com/posts', { name: name })
+          .done(function(data) {
+            $('#response').text(`Server Response: Your name "${data.name}" was submitted successfully!`).css({
+              'background-color': '#d4edda',
+              'color': '#155724',
+              'border-color': '#4caf50'
+            }).show();
+            $('#nameForm')[0].reset();
+          })
+          .fail(function() {
+            $('#response').text('Error submitting your name. Please try again.').css({
+              'background-color': '#f8d7da',
+              'color': '#721c24',
+              'border-color': '#f5c6cb'
+            }).show();
+          });
+      });
+    });
+  </script>
+
+</body>
+</html>

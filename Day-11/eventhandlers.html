@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event handlers</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><style>
+    #colorBox {
+      width: 200px;
+      height: 200px;
+      background-color: lightgray;
+      margin: 50px auto;
+      text-align: center;
+      line-height: 200px;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+    function showAlert() {
+      alert("Button was clicked!");
+    }
+  </script>
+</head>
+<body>
+
+  <button onclick="showAlert()">Click Me</button>
+
+  <p id="hoverParagraph">Hover over this paragraph.</p>
+
+  <script>
+    $(document).ready(function () {
+      $('#hoverParagraph').hover(
+        function () {
+          $(this).text('You are hovering over the paragraph!');
+        },
+        function () {
+          $(this).text('Hover over this paragraph.');
+        }
+      );
+    });
+  </script>
+
+  <input type="text" id="letterInput" placeholder="Type a letter" />
+
+  <script>
+    $(document).ready(function() {
+      $('#letterInput').on('input', function() {
+        const value = $(this).val();
+        if (value.length > 0) {
+          alert('You entered: ' + value);
+          $(this).val(''); 
+        }
+      });
+    });
+  </script>
+
+  <div id="colorBox">Double-click me!</div>
+
+  <script>
+    $(document).ready(function() {
+      $('#colorBox').dblclick(function() {
+        $(this).css('background-color', 'orange'); 
+      });
+    });
+  </script>
+</body>
+</html>
