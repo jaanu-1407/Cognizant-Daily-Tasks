@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larget and Smallest</title>
+</head>
+<body>
+    <script>
+        let input=prompt("enter array values");
+        let arr=input.split(',').map(Number);
+        function MinMax(arr)
+        {
+            if(arr.length==0)
+                return "Empty array";
+            let min=arr[0];
+            let max=arr[0];
+            for(i=1;i<=arr.length;i++)
+            {
+                if(arr[i]<min)
+                    min=arr[i];
+                else if(arr[i]>max)
+                    max=arr[i];
+            }
+            document.writeln("Max:"+max+"<br>");
+            document.writeln("Min:"+min+"<br>");
+        }
+        MinMax(arr);
+    </script>
+    </body>
+</html>

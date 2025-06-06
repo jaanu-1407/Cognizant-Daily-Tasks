@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+        let a=Number(prompt("enter 1st value"));
+        let b=Number(prompt("enter 2nd value"));
+        let oper=prompt("enter operators like +,-,*,/,%");
+        switch(oper)
+        {
+            case '+':
+                document.write("Addition:" +(a+b));
+                break;
+            case '-':
+                document.write("Subtraction:"+ (a-b));
+                break;
+            case '*':
+                document.write("Multiplication:" +(a*b));
+                break;
+            case '/':
+                document.write("Division:" +(a/b));  
+                break;
+            case '%':
+                document.write("Modulus"+ (a%b));  
+                break;
+            default:
+                "Invalid operator";
+        }
+    </script>
+</body>
+</html>

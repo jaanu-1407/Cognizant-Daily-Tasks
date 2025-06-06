@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Office Supplies Inventory</title>
+</head>
+<body>
+    <script>
+        let supplies = [];
+
+        function displaySupplies() 
+        {
+            document.write("Final Inventory:");
+                for (let i = 0; i < supplies.length; i++) 
+                {
+                    document.write((i + 1) + ". " + supplies[i] + "<br>");
+                }
+        }
+
+        let action;
+        do {
+            action = prompt("Choose an action: add / remove / exit");
+
+            if (action === "add") {
+                let item = prompt("Enter item to add:");
+                if (item) {
+                    supplies.push(item);
+                }
+            } else if (action === "remove") {
+                let item = prompt("Enter item to remove:");
+                let index = supplies.indexOf(item);
+                if (index !== -1) {
+                    supplies.splice(index, 1);
+                }
+            }
+        } while (action !== "exit");
+
+        displaySupplies();
+    </script>
+</body>
+</html>

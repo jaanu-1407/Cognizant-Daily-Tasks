@@ -1,0 +1,13 @@
+1
+2
+3
+4
+It combines Git, a version control system, with Bash, a Linux-style terminal.
+Git Bash allows users to run both Git commands and basic Unix commands.
+It’s useful for developers who want to manage code and use shell commands on Windows.
+Commands like ls, cd, touch, and rm work just like on Linux or macOS.
+You can use Git Bash to clone repositories, commit changes, and push code to GitHub.
+It makes working with Git more powerful and script-friendly.
+Git Bash is lightweight and easy to install from git-scm.com.
+Once installed, you can open it by right-clicking and selecting Git Bash Here.
+It’s a great tool for learning Linux commands and working with Git on Windows.

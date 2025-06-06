@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+</head>
+<body>
+  <script>
+    let todoList = {};
+    function addTask(taskName, status) {
+      todoList[taskName] = status;
+      document.write("Task added: " + taskName + " → " + status + "<br>");
+    }
+    function markCompleted(taskName) {
+      if (todoList.hasOwnProperty(taskName)) {
+        todoList[taskName] = "completed";
+        document.write("Task updated: " + taskName + " → completed<br>");
+      } else {
+        document.write("Task '" + taskName + "' not found.<br>");
+      }
+    }
+    function displayTasks() {
+      document.write("<h3>All Tasks:</h3>");
+      for (let task in todoList) {
+        document.write(task + ": " + todoList[task] + "<br>");
+      }
+    }
+    addTask("Buy groceries", "pending");
+    addTask("Study","pending");
+    markCompleted("Buy groceries");
+    displayTasks();
+  </script>
+</body>
+</html>

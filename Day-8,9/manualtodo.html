@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+</head>
+<body>
+  <script>
+    let todoList = {};
+
+    function addTasks() {
+      let count = Number(prompt("How many tasks do you want to add?"));
+      for (let i = 0; i < count; i++) {
+        let task = prompt("Enter task name:");
+        let status = prompt("Enter status for '" + task + "' (pending/completed):").toLowerCase();
+        if (status !== "pending" && status !== "completed") {
+          status = "pending";
+        }
+        todoList[task] = status;
+      }
+    }
+
+    function markTasks() {
+      let taskToMark = prompt("Enter task name to mark as completed:");
+      if (todoList.hasOwnProperty(taskToMark)) {
+        todoList[taskToMark] = "completed";
+        document.write("Marked as completed: " + taskToMark + "<br>");
+      } else {
+        document.write("Task not found: " + taskToMark + "<br>");
+      }
+    }
+
+    function displayTasks() {
+      document.write("<h3>To-Do List:</h3>");
+      for (let task in todoList) {
+        document.write(task + ": " + todoList[task] + "<br>");
+      }
+    }
+
+    // Initial Add
+    addTasks();
+
+    while (true) {
+      let mark = prompt("Do you want to mark any task as completed? (yes/no)").toLowerCase();
+      if (mark === "yes") {
+        markTasks();
+      }
+
+      let show = prompt("Do you want to display the tasks? (yes/no)").toLowerCase();
+      if (show === "yes") {
+        displayTasks();
+      }
+
+      let next = prompt("What do you want to do next?\n1. Add\n2. Mark\n3. Exit").toLowerCase();
+
+      if (next === "add") {
+        addTasks();
+        displayTasks();
+      } else if (next === "mark") {
+        markTasks();
+        displayTasks();
+      } else if (next === "exit") {
+        break;
+      } else {
+        alert("Invalid choice.");
+      }
+    }
+  </script>
+</body>
+</html>

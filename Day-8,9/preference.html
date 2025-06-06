@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>preferences</title>
+</head>
+<body>
+    <script>
+        function preference(lang="English", theme="dark", noti="")
+        {
+            document.write("your language: "+lang+", theme: "+theme+"<br>");
+            document.write("notifications:"+(noti?" enabled" :"disabled")+"<br>");
+        }
+        preference("hindi","light","false");
+        preference();
+    </script>
+</body>
+</html>
