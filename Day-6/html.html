@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GenC Registration</title>
+  <style>
+    body {
+      background-color: burlywood;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    form {
+      background-color: #8b5e3c;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      text-align: left;
+    }
+    label {
+      display: inline-block;
+      width: 150px;
+    }
+    input, select, textarea {
+      margin-bottom: 10px;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>:: GenC Registration Form ::</h1>
+  </header>
+
+  <form action="#">
+    <label for="fname">Full Name:</label>
+    <input type="text" name="fname" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label for="pwd">Password:</label>
+    <input type="password" name="pwd" required><br>
+
+    <label>Select Skills:</label>
+    <input type="checkbox" name="s1"> Java
+    <input type="checkbox" name="s2"> .NET
+    <input type="checkbox" name="s3"> Python<br>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female<br>
+
+    <label for="city">City:</label>
+    <select name="city">
+      <option value="Bangalore">Bangalore</option>
+      <option value="Chennai">Chennai</option>
+      <option value="Hyderabad">Hyderabad</option>
+      <option value="Pune">Pune</option>
+    </select><br>
+
+    <label>Address:</label>
+    <textarea name="adr" cols="20" rows="3"></textarea><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" name="dob"><br>
+
+    <label for="range">Experience (yrs):</label>
+    <input type="range" min="0" max="10"><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <section>
+    <h2>Semantic Elements Example</h2>
+    <article>
+      <header><h3>My Blog Post</h3></header>
+      <section>
+        <p>This is the main content of my blog post.</p>
+      </section>
+      <footer><p>Posted by Author Name on June 6, 2025</p></footer>
+    </article>
+  </section>
+
+  <section>
+    <h2>Figure & Figcaption Example</h2>
+    <figure>
+      <img src="https://via.placeholder.com/200" alt="Sample Image">
+      <figcaption>Placeholder image for reference</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Video Example</h2>
+    <video width="320" height="240" controls>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <section>
+    <h2>Canvas Example</h2>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #fff;"></canvas>
+  </section>
+
+</body>
+</html>
